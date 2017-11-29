@@ -2,7 +2,7 @@
   "name": "decorated-ts-hub",
   "version": "1.3.0",
   "description": "Ts-Hub decorated framework",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "unit-test": "jasmine JASMINE_CONFIG_PATH=jasmine.unit-test.json",
     "integration-test": "jasmine JASMINE_CONFIG_PATH=jasmine.integration-test.json",
@@ -21,7 +21,7 @@
     "url": "https://github.com/ftacchini/decorated-ts-hub/issues"
   },
   "homepage": "https://github.com/ftacchini/decorated-ts-hub#readme",
-  "typings": "./dts/index.d.ts",
+  "typings": "./dts/src/index.d.ts",
   "dependencies": {
     "include-all": "^2.0.0",
     "ts-hub": "^1.5.3"
