@@ -1,6 +1,5 @@
-import { Types } from './../../../core/container/types';
 import { injectable, inject } from 'inversify';
-import { FunctionReader, HubContainer } from '../../../core/';
+import { FunctionReader, HubContainer, Types } from 'ts-hub';
 
 @injectable()
 export class MetadataFunctionReader implements FunctionReader {

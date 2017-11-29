@@ -1,7 +1,7 @@
 import {ClassMetadata} from "./class-metadata";
 import {MethodMetadata} from "./method-metadata";
 import {ArgumentMetadata} from "./argument-metadata";
-import {HubContainer} from "../../core";
+import {HubContainer} from "ts-hub";
 
 export class ControllerMetadataBuilder {
 
@@ -23,9 +23,9 @@ export class ControllerMetadataBuilder {
             return function (target: any) {
                 var controllerBuilder = (container: HubContainer): any => { 
                     var instance =  container.bindAndGet<Y>(constructor); 
-                    instance.target = target;
-                    instance.information = information;
-
+                    instance.withTarget(target)
+                            .withInformation(information);
+                    
                     return instance;
                 };
 
@@ -51,9 +51,9 @@ export class ControllerMetadataBuilder {
             return function (target: any, propertyKey: string) {
                 var controllerBuilder = (container: HubContainer): any => { 
                     var instance =  container.bindAndGet<Y>(constructor); 
-                    instance.target = target;
-                    instance.information = information;
-                    instance.propertyKey = propertyKey;
+                    instance.withTarget(target)
+                            .withInformation(information)
+                            .withPropertyKey(propertyKey);
 
                     extraSetters && extraSetters(instance);
 
@@ -82,10 +82,10 @@ export class ControllerMetadataBuilder {
             return function (target: any, propertyKey: string, arg: number) {
                 var controllerBuilder = (container: HubContainer): any => { 
                     var instance =  container.bindAndGet<Y>(constructor); 
-                    instance.target = target;
-                    instance.information = information;
-                    instance.propertyKey = propertyKey;
-                    instance.arg = arg;
+                    instance.withTarget(target)
+                            .withInformation(information)
+                            .withPropertyKey(propertyKey)
+                            .withArgumentIndex(arg);
 
                     return instance;
                 };

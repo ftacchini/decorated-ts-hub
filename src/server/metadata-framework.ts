@@ -1,7 +1,6 @@
-import { HubContainer } from './../../core/container/hub-container';
 import { MetadataParameterReader, MetadataFunctionReader, MetadataMiddlewareReader, MetadataRouteReader } from './../routed-controller';
 import { MetadataControllerLoader } from './../controller';
-import { ParameterReader, FunctionReader, MiddlewareReader, RouteReader, ControllerLoader, TsFramework, Types } from './../../core';
+import { HubContainer, ParameterReader, FunctionReader, MiddlewareReader, RouteReader, ControllerLoader, TsFramework, Types } from 'ts-hub';
 import { interfaces } from "inversify";
 
 export class MetadataFramework implements TsFramework {

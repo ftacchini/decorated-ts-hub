@@ -1,6 +1,6 @@
 var includeAll = require("include-all");
 import * as _ from "lodash";
-import {ControllerBuilder, HubContainer, ControllerLoader} from "../../../core";
+import {ControllerBuilder, HubContainer, ControllerLoader} from "ts-hub";
 import * as ControllerMetadataKeys from "../../helper/controller-metadata-keys";
 
 export class MetadataControllerLoader implements ControllerLoader {
@@ -22,17 +22,17 @@ export class MetadataControllerLoader implements ControllerLoader {
 
         let controllerBuilderFactory: ((container: HubContainer) => ControllerBuilder)[] = [];
         
-        _.each(_.values(controllerFiles), (exports: any) => {
+        _.each(_.values(controllerFiles), (exportedData: any) => {
 
-            let filteredExports = _.filter(_.flatten(_.map(exports, (value: any) => {
+            let arrayOfMetadata =  _.map<any, any[]>(exportedData, (value: any) => {
                 return Reflect.getMetadata(ControllerMetadataKeys.CONTROLLER_BUILDER, value);
-            })), metadata => metadata);
+            });
+            let flattenMetadata = _.flatten(arrayOfMetadata); 
+            let filteredExports = _.filter((flattenMetadata: any[]) =>  flattenMetadata);
             
             controllerBuilderFactory = _.union(controllerBuilderFactory, filteredExports);
         });
         
-
-
         return controllerBuilderFactory.map(factory => factory(container));
     }
 

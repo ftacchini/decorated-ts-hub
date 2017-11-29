@@ -1,5 +1,4 @@
-import { Types } from './../../../core/container/types';
-import { RouteReader, RouteBuilder, HubContainer } from "../../../core";
+import { Types, RouteReader, RouteBuilder, HubContainer } from "ts-hub";
 import { ControllerMetadataReader, ControllerMetadataKeys } from "../../helper";
 import { injectable, inject } from "inversify";
 import * as _ from "lodash";

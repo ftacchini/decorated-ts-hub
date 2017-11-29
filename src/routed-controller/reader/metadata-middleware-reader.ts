@@ -1,7 +1,5 @@
-import { Types } from './../../../core/container/types';
 import { ControllerMetadataKeys } from './../../helper/index';
-import { RequestHandler } from 'express';
-import { MiddlewareReader, MiddlewareBuilder, HubContainer } from "../../../core";
+import { Types, MiddlewareReader, MiddlewareBuilder, HubContainer } from "ts-hub";
 import { ControllerMetadataReader } from "../../helper";
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
