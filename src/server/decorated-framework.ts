@@ -3,7 +3,7 @@ import { MetadataControllerLoader } from './../controller';
 import { HubContainer, ParameterReader, FunctionReader, MiddlewareReader, RouteReader, ControllerLoader, TsFramework, Types } from 'ts-hub';
 import { interfaces } from "inversify";
 
-export class MetadataFramework implements TsFramework {
+export class DecoratedFramework implements TsFramework {
 
     constructor(private container: HubContainer) {
     }
