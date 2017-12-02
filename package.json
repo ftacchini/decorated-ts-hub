@@ -1,6 +1,6 @@
 {
   "name": "decorated-ts-hub",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "Ts-Hub decorated framework",
   "main": "dist/src/index.js",
   "scripts": {
