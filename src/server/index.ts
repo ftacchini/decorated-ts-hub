@@ -1,1 +1,1 @@
-export * from "./metadata-framework";
+export * from "./decorated-framework";
