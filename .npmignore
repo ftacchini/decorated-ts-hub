@@ -1,11 +1,11 @@
-node_modules
 npm-debug.log
 .idea
 .vscode
 .gitignore
-src
-test
+/src
+/test
 tsconfig.json
 jasmine.*.json
-dist/test
-dts/test
+/dist/test
+/dts/test
+*.js.map
