@@ -1,1 +1,1 @@
-export * from "./decorated-framework";
+export * from "./decorated-framework-builder";
