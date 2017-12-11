@@ -28,7 +28,7 @@ export class MetadataControllerLoader implements ControllerLoader {
                 return Reflect.getMetadata(ControllerMetadataKeys.CONTROLLER_BUILDER, value);
             });
             let flattenMetadata = _.flatten(arrayOfMetadata); 
-            let filteredExports = _.filter((flattenMetadata: any[]) =>  flattenMetadata);
+            let filteredExports = _.filter<((container: HubContainer) => ControllerBuilder)>(flattenMetadata, value => value);
             
             controllerBuilderFactory = _.union(controllerBuilderFactory, filteredExports);
         });
