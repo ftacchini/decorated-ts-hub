@@ -10,6 +10,6 @@ export class MetadataFunctionReader implements FunctionReader {
 
     public readFunction(controller: any, action: string): Function {       
         var controllerInstance = this.hubContainer.bindAndGet<any>(controller.constructor);
-        return controllerInstance[action];
+        return (...args: any[]) => { return controllerInstance[action].apply(controllerInstance, args); };
     }
 }
