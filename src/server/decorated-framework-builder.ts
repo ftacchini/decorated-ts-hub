@@ -54,11 +54,22 @@ export class DecoratedFrameworkBuilder {
         this.functionReader || (this.functionReader = new MetadataFunctionReader(container));
         this.paramsReader || (this.paramsReader = new MetadataParameterReader(container));
 
-        return new RoutedTsFramework(
+        var framework = new RoutedTsFramework(
             this.controllerLoader,
             this.routeReader,
             this.middlewareReader,
             this.functionReader,
             this.paramsReader);
+        
+        this.reset();
+        return framework;
+    }
+
+    public reset(): void {
+        this.withContollerLoader(null)
+            .withFunctionReader(null)
+            .withMiddlewareReader(null)
+            .withParameterReader(null)
+            .withRouteReader(null);
     }
 }
