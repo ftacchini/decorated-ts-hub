@@ -2,9 +2,9 @@ import { HubContainer, ParameterBuilder } from 'ts-hub';
 import { ArgumentMetadata } from './../helper/argument-metadata';
 import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
 
-export const Parameter = function attributeDefinition<T, Y extends ParameterBuilder<T, any>>(
+export const Parameter = function attributeDefinition<Y extends ParameterBuilder<any, any>>(
     constructor: new (...args: any[]) => Y,
-    information?: T) {
+    information?: any) {
 
     return (target: any, propertyKey: string, arg: number) => {
 

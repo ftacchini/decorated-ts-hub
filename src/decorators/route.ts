@@ -3,9 +3,9 @@ import { HubContainer } from 'ts-hub';
 import { MethodMetadata } from './../helper/method-metadata';
 import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
 
-export const Route = function attributeDefinition<T, Y extends RouteBuilder<T, any, any>>(
+export const Route = function attributeDefinition<Y extends RouteBuilder<any, any, any>>(
     constructor: new (...args: any[]) => Y,
-    information?: T) {
+    information?: any) {
 
     return (target: any, propertyKey: string) => {
 

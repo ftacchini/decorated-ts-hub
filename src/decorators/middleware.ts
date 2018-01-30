@@ -3,16 +3,16 @@ import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
 import { ConstructorMiddlewareBuilder, HubContainer } from 'ts-hub';
 import * as _ from "lodash";
 
-export const Middleware = function attributeDefinition<T, Y extends ConstructorMiddlewareBuilder<T, any, any>>(
+export const Middleware = function attributeDefinition<Y extends ConstructorMiddlewareBuilder<any, any, any>>(
     constructor: new (...args: any[]) => Y,
     handlerMethod: string = "handler",
-    informationDefaults?: T,
+    informationDefaults?: any,
     priority?: number) {
 
     return (target: any) => {
         injectable()(target);
 
-        var builder = (container: HubContainer, information: T = <T>{}, defaultPriority?: number): any => {
+        var builder = (container: HubContainer, information: any = {}, defaultPriority?: number): any => {
             var instance = container.bindAndGet<Y>(constructor);
             instance.withTarget(target)
                 .withPropertyKey(handlerMethod)

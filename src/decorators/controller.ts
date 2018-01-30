@@ -3,9 +3,9 @@ import { HubContainer, RoutedControllerBuilder } from 'ts-hub';
 import { ClassMetadata } from './../helper/class-metadata';
 import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
 
-export const Controller = function attributeDefinition<T, Y extends RoutedControllerBuilder<T, any, any, any>>(
+export const Controller = function attributeDefinition<Y extends RoutedControllerBuilder<any, any, any, any>>(
     constructor: new (...args: any[]) => Y,
-    information?: T) {
+    information?: any) {
 
     return (target: any) => {
         injectable()(target);
