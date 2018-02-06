@@ -24,7 +24,7 @@
   "typings": "./dts/src/index.d.ts",
   "dependencies": {
     "include-all": "^2.0.0",
-    "ts-hub": "^1.10.0"
+    "ts-hub": "^3.0.2"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.0",

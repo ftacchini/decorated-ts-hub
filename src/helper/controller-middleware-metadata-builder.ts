@@ -1,5 +1,5 @@
 import { ControllerMetadataKeys } from './index';
-import { ConstructorMiddlewareBuilder, MiddlewareSupport } from 'ts-hub';
+import { ConstructorMiddlewareBuilder } from 'ts-hub';
 import { ControllerMetadataBuilder } from './controller-metadata-builder';
 
 
