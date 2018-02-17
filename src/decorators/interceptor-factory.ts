@@ -6,7 +6,7 @@ export const InterceptorFactory = (priorityModifier: (prior: number) => number) 
 
     return (constructor: new (...args: any[]) => any, information?: any, priority?: number) => {
 
-        return (target: any, propertyKey: string) => {
+        return (target: any, propertyKey?: string) => {
             var constructorBuilders = Reflect.getMetadata(ControllerMetadataKeys.MIDDLEWARE_BUILDER_CONSTRUCTOR, constructor);
 
             constructorBuilders && constructorBuilders.length && constructorBuilders.foreah((constructorBuilder: any) => {
@@ -15,7 +15,7 @@ export const InterceptorFactory = (priorityModifier: (prior: number) => number) 
                 }
 
                 var builder = (container: HubContainer): any => {
-                    var instance = constructorBuilder(container, information, priority);
+                    var instance = constructorBuilder(container, information, priorityModifier(priority));
                     return instance;
                 };
 
