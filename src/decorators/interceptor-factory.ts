@@ -4,7 +4,7 @@ import { ConstructorMiddlewareBuilder, HubContainer } from 'ts-hub';
 
 export const InterceptorFactory = (priorityModifier: (prior: number) => number) => {
 
-    (constructor: new (...args: any[]) => any, information?: any, priority?: number) => {
+    return (constructor: new (...args: any[]) => any, information?: any, priority?: number) => {
 
         return (target: any, propertyKey: string) => {
             var constructorBuilders = Reflect.getMetadata(ControllerMetadataKeys.MIDDLEWARE_BUILDER_CONSTRUCTOR, constructor);
