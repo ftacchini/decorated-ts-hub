@@ -1,4 +1,5 @@
 var includeAll = require("include-all");
+var path = require("path");
 import * as _ from "lodash";
 import {ControllerBuilder, HubContainer, ControllerLoader} from "ts-hub";
 import * as ControllerMetadataKeys from "../../helper/controller-metadata-keys";
@@ -6,6 +7,7 @@ import * as ControllerMetadataKeys from "../../helper/controller-metadata-keys";
 export class MetadataControllerLoader implements ControllerLoader {
 
     constructor(
+        private baseDir?: string,
         private filePattern?: RegExp,
         private ignorePattern?: RegExp){
         
@@ -14,9 +16,9 @@ export class MetadataControllerLoader implements ControllerLoader {
     loadControllerBuilders(container: HubContainer) : ControllerBuilder[] {
         
         let controllerFiles = includeAll(<any>{
-            dirname: process.cwd(),
+            dirname: path.join(process.cwd(), this.baseDir || ""),
             filter: this.filePattern || /(.+)\-controller\.js$/,
-            excludeDirs: this.ignorePattern || /^\.(git|svn)$/,
+            excludeDirs: this.ignorePattern || /^\.(git|svn|node_modules)$/,
             flatten: true
         });
 
