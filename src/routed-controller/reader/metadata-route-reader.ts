@@ -1,7 +1,8 @@
-import { Types, RouteReader, RouteBuilder, HubContainer } from "ts-hub";
-import { ControllerMetadataReader, ControllerMetadataKeys } from "../../helper";
-import { injectable, inject } from "inversify";
-import * as _ from "lodash";
+import { inject, injectable } from 'inversify';
+import * as _ from 'lodash';
+import { HubContainer, RouteBuilder, RouteReader, Types } from 'ts-hub';
+
+import { ControllerMetadataKeys, ControllerMetadataReader } from '../../helper';
 
 @injectable()
 export class MetadataRouteReader implements RouteReader {

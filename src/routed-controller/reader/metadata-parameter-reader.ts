@@ -1,8 +1,7 @@
-import { PARAMETER_BUILDER } from './../../helper/controller-metadata-keys';
-import { ArgumentMetadata } from './../../helper/argument-metadata';
-import { ControllerMetadataReader, ControllerMetadataKeys } from './../../helper';
-import { injectable, inject } from 'inversify';
-import { Types, ParameterReader, ParameterBuilder, HubContainer } from 'ts-hub';
+import { inject, injectable } from 'inversify';
+import { HubContainer, ParameterBuilder, ParameterReader, Types } from 'ts-hub';
+
+import { ControllerMetadataKeys, ControllerMetadataReader } from './../../helper';
 
 @injectable()
 export class MetadataParameterReader implements ParameterReader {

@@ -1,6 +1,6 @@
 import { HubContainer, ParameterBuilder } from 'ts-hub';
-import { ArgumentMetadata } from './../helper/argument-metadata';
-import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
+
+import { ControllerMetadataKeys } from '..';
 
 export const Parameter = function attributeDefinition<Y extends ParameterBuilder<any, any>>(
     constructor: new (...args: any[]) => Y,

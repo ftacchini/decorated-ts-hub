@@ -1,7 +1,8 @@
-import { ControllerMetadataKeys } from './../../helper/index';
-import { Types, MiddlewareReader, MiddlewareBuilder, HubContainer } from "ts-hub";
-import { ControllerMetadataReader } from "../../helper";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
+import { HubContainer, MiddlewareBuilder, MiddlewareReader, Types } from 'ts-hub';
+
+import { ControllerMetadataReader } from '../../helper';
+import { ControllerMetadataKeys } from './../../helper';
 
 @injectable()
 export class MetadataMiddlewareReader implements MiddlewareReader {

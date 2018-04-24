@@ -1,7 +1,8 @@
-import {ClassMetadata} from "./class-metadata";
-import {MethodMetadata} from "./method-metadata";
-import {ArgumentMetadata} from "./argument-metadata";
-import {HubContainer} from "ts-hub";
+import { HubContainer } from 'ts-hub';
+
+import { ArgumentMetadata } from './argument-metadata';
+import { ClassMetadata } from './class-metadata';
+import { MethodMetadata } from './method-metadata';
 
 export class ControllerMetadataBuilder {
 

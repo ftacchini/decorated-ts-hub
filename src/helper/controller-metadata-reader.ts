@@ -1,7 +1,4 @@
-import {ClassMetadata} from "./class-metadata";
-import {MethodMetadata} from "./method-metadata";
-import {ArgumentMetadata} from "./argument-metadata";
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 export class ControllerMetadataReader {
 

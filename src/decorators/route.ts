@@ -1,7 +1,6 @@
-import { RouteBuilder } from 'ts-hub';
-import { HubContainer } from 'ts-hub';
-import { MethodMetadata } from './../helper/method-metadata';
-import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
+import { HubContainer, RouteBuilder } from 'ts-hub';
+
+import { ControllerMetadataKeys } from '..';
 
 export const Route = function attributeDefinition<Y extends RouteBuilder<any, any, any>>(
     constructor: new (...args: any[]) => Y,

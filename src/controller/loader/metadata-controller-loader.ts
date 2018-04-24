@@ -1,9 +1,10 @@
+import * as _ from 'lodash';
+import { ControllerBuilder, ControllerLoader, HubContainer } from 'ts-hub';
+
+import * as ControllerMetadataKeys from '../../helper/controller-metadata-keys';
+
 var includeAll = require("include-all");
 var path = require("path");
-import * as _ from "lodash";
-import {ControllerBuilder, HubContainer, ControllerLoader} from "ts-hub";
-import * as ControllerMetadataKeys from "../../helper/controller-metadata-keys";
-
 export class MetadataControllerLoader implements ControllerLoader {
 
     constructor(

@@ -1,6 +1,6 @@
-import { injectable } from 'inversify';
-import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
-import { ConstructorMiddlewareBuilder, HubContainer } from 'ts-hub';
+import { HubContainer } from 'ts-hub';
+
+import { ControllerMetadataKeys } from '..';
 
 export const InterceptorFactory = (priorityModifier: (prior: number) => number) => {
 

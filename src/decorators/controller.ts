@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 import { HubContainer, RoutedControllerBuilder } from 'ts-hub';
-import { ClassMetadata } from './../helper/class-metadata';
-import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
+
+import { ControllerMetadataKeys } from '..';
 
 export const Controller = function attributeDefinition<Y extends RoutedControllerBuilder<any, any, any, any>>(
     constructor: new (...args: any[]) => Y,

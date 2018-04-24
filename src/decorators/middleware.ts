@@ -1,7 +1,8 @@
 import { injectable } from 'inversify';
-import { ControllerMetadataBuilder, ControllerMetadataKeys } from "../index";
+import * as _ from 'lodash';
 import { ConstructorMiddlewareBuilder, HubContainer } from 'ts-hub';
-import * as _ from "lodash";
+
+import { ControllerMetadataKeys } from '..';
 
 export const Middleware = function attributeDefinition<Y extends ConstructorMiddlewareBuilder<any, any, any>>(
     constructor: new (...args: any[]) => Y,
