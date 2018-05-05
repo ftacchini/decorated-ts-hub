@@ -1,5 +1,4 @@
 import { InterceptorFactory } from './interceptor-factory';
+import { ExecutionOrder } from "ts-hub";
 
-export const BeforeExecution = InterceptorFactory((priority: number) => {
-    return priority < 0 ? priority : -priority;
-})
+export const BeforeExecution = InterceptorFactory(ExecutionOrder.PreActivation)
