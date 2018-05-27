@@ -1,10 +1,10 @@
-import { HubContainer, ExecutionOrder } from 'ts-hub';
+import { ExecutionOrder, HubContainer } from 'ts-hub';
 
 import { ControllerMetadataKeys } from '..';
 
 export const InterceptorFactory = (executionOrder: ExecutionOrder) => {
 
-    return (constructor: new (...args: any[]) => any, information?: any, priority?: number) => {
+    return (constructor: new (...args: any[]) => any, information?: any) => {
 
         return (target: any, propertyKey?: string) => {
             var constructorBuilders = Reflect.getMetadata(ControllerMetadataKeys.MIDDLEWARE_BUILDER_CONSTRUCTOR, constructor);
@@ -15,7 +15,7 @@ export const InterceptorFactory = (executionOrder: ExecutionOrder) => {
                 }
 
                 var builder = (container: HubContainer): any => {
-                    var instance = constructorBuilder(container, information, priority, executionOrder);
+                    var instance = constructorBuilder(container, information, executionOrder);
                     return instance;
                 };
 
