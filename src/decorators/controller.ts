@@ -1,17 +1,17 @@
-import { injectable } from 'inversify';
+import { injectable, interfaces } from 'inversify';
 import { HubContainer, RoutedControllerBuilder } from 'ts-hub';
 
 import { ControllerMetadataKeys } from '..';
 
-export const Controller = function attributeDefinition<Y extends RoutedControllerBuilder<any, any, any, any>>(
-    constructor: new (...args: any[]) => Y,
-    information?: any) {
+export const Controller = function attributeDefinition<Y>(
+    constructor: interfaces.Newable<RoutedControllerBuilder<Y, any, any, any>>,
+    information?: Y) {
 
     return (target: any) => {
         injectable()(target);
 
         var builder = (container: HubContainer): any => {
-            var instance = container.bindAndGet<Y>(constructor);
+            var instance = container.bindAndGet<RoutedControllerBuilder<Y, any, any, any>>(constructor);
             instance.withTarget(target)
                 .withInformation(information);
 

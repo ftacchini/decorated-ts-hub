@@ -1,19 +1,21 @@
-import { injectable } from 'inversify';
+import { injectable, interfaces } from 'inversify';
 import * as _ from 'lodash';
-import { AbstractMiddlewareBuilder, ExecutionOrder, HubContainer } from 'ts-hub';
+import { ExecutionOrder, HubContainer, MiddlewareBuilder, MiddlewareInformation } from 'ts-hub';
 
 import { ControllerMetadataKeys } from '..';
 
-export const Middleware = function attributeDefinition<Y extends AbstractMiddlewareBuilder<any, any, any>>(
-    constructor: new (...args: any[]) => Y,
+
+
+export const Middleware = function attributeDefinition<Y extends MiddlewareInformation>(
+    constructor: interfaces.Newable<MiddlewareBuilder<Y,any,any>>,
     handlerMethod: string = "handler",
-    informationDefaults?: any) {
+    informationDefaults?: Y) {
 
     return (target: any) => {
         injectable()(target);
 
         var builder = (container: HubContainer, information: any = {}, executionOrder: ExecutionOrder = ExecutionOrder.Activation): any => {
-            var instance = container.bindAndGet<Y>(constructor);
+            var instance = container.bindAndGet<MiddlewareBuilder<Y,any,any>>(constructor);
             information.executionOrder = executionOrder;
 
             instance.withTarget(target)

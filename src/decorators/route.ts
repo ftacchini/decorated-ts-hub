@@ -1,15 +1,16 @@
 import { HubContainer, RouteBuilder } from 'ts-hub';
 
 import { ControllerMetadataKeys } from '..';
+import { interfaces } from 'inversify';
 
-export const Route = function attributeDefinition<Y extends RouteBuilder<any, any, any>>(
-    constructor: new (...args: any[]) => Y,
-    information?: any) {
+export const Route = function attributeDefinition<Y>(
+    constructor: interfaces.Newable<RouteBuilder<Y, any, any>>,
+    information?: Y) {
 
     return (target: any, propertyKey: string) => {
 
         var builder = (container: HubContainer): any => {
-            var instance = container.bindAndGet<Y>(constructor);
+            var instance = container.bindAndGet<RouteBuilder<Y, any, any>>(constructor);
             instance.withTarget(target)
                 .withInformation(information)
                 .withPropertyKey(propertyKey);

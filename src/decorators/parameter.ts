@@ -1,15 +1,16 @@
 import { HubContainer, ParameterBuilder } from 'ts-hub';
 
 import { ControllerMetadataKeys } from '..';
+import { interfaces } from 'inversify';
 
-export const Parameter = function attributeDefinition<Y extends ParameterBuilder<any, any>>(
-    constructor: new (...args: any[]) => Y,
-    information?: any) {
+export const Parameter = function attributeDefinition<Y>(
+    constructor: interfaces.Newable<ParameterBuilder<Y,any>>,
+    information?: Y) {
 
     return (target: any, propertyKey: string, arg: number) => {
 
         var builder = (container: HubContainer): any => {
-            var instance = container.bindAndGet<Y>(constructor);
+            var instance = container.bindAndGet<ParameterBuilder<Y,any>>(constructor);
             instance.withTarget(target)
                 .withInformation(information)
                 .withPropertyKey(propertyKey)
