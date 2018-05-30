@@ -9,7 +9,7 @@ export const InterceptorFactory = (executionOrder: ExecutionOrder) => {
         return (target: any, propertyKey?: string) => {
             var constructorBuilders = Reflect.getMetadata(ControllerMetadataKeys.MIDDLEWARE_BUILDER_CONSTRUCTOR, constructor);
 
-            constructorBuilders && constructorBuilders.length && constructorBuilders.foreach((constructorBuilder: any) => {
+            constructorBuilders && constructorBuilders.length && constructorBuilders.forEach((constructorBuilder: any) => {
                 if (!Reflect.hasMetadata(ControllerMetadataKeys.MIDDLEWARE_BUILDER, target, propertyKey)) {
                     Reflect.defineMetadata(ControllerMetadataKeys.MIDDLEWARE_BUILDER, [], target, propertyKey);
                 }
