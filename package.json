@@ -25,11 +25,12 @@
   "dependencies": {
     "include-all": "^2.0.0",
     "reflect-metadata": "^0.1.12",
-    "ts-hub": "^3.2.1"
+    "ts-hub": "^3.3.0"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.0",
     "@types/node": "^8.0.53",
+    "http-hub": "^2.2.5",
     "jasmine": "^2.8.0",
     "rimraf": "^2.6.1",
     "typescript": "^2.6.2"
