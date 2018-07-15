@@ -2,7 +2,7 @@ import { MetadataRouteReader } from './../routed-controller/reader/metadata-rout
 import { MetadataParameterReader } from './../routed-controller/reader/metadata-parameter-reader';
 import { MetadataControllerLoader } from './../controller/loader/metadata-controller-loader';
 import { MetadataMiddlewareReader } from './../routed-controller/reader/metadata-middleware-reader';
-import { MetadataFunctionReader } from './../routed-controller/reader/metadata-function-reader';
+import { MetadataActivationContextProvider } from '../routed-controller/activator/metadata-activation-context-provider';
 import { HubContainer, RoutedTsFramework } from 'ts-hub';
 
 export class DecoratedFrameworkBuilder {
@@ -11,7 +11,7 @@ export class DecoratedFrameworkBuilder {
     private paramsReader: MetadataParameterReader;
     private controllerLoader: MetadataControllerLoader;
     private middlewareReader: MetadataMiddlewareReader;
-    private functionReader: MetadataFunctionReader;
+    private activationContextProvider: MetadataActivationContextProvider;
     
     private static _instance: DecoratedFrameworkBuilder;
     public static get instance() {
@@ -42,8 +42,8 @@ export class DecoratedFrameworkBuilder {
         return this;
     }
 
-    public withFunctionReader(functionReader: MetadataFunctionReader) : this {
-        this.functionReader = functionReader;
+    public withActivationContextProvider(activationContextProvider: MetadataActivationContextProvider) : this {
+        this.activationContextProvider = activationContextProvider;
         return this;
     }
     
@@ -51,14 +51,14 @@ export class DecoratedFrameworkBuilder {
         this.controllerLoader || (this.controllerLoader = new MetadataControllerLoader());
         this.routeReader || (this.routeReader = new MetadataRouteReader(container));
         this.middlewareReader || (this.middlewareReader = new MetadataMiddlewareReader(container));
-        this.functionReader || (this.functionReader = new MetadataFunctionReader(container));
+        this.activationContextProvider || (this.activationContextProvider = new MetadataActivationContextProvider(container));
         this.paramsReader || (this.paramsReader = new MetadataParameterReader(container));
 
         var framework = new RoutedTsFramework(
             this.controllerLoader,
             this.routeReader,
             this.middlewareReader,
-            this.functionReader,
+            this.activationContextProvider,
             this.paramsReader);
         
         this.reset();
@@ -67,7 +67,7 @@ export class DecoratedFrameworkBuilder {
 
     public reset(): void {
         this.withContollerLoader(null)
-            .withFunctionReader(null)
+            .withActivationContextProvider(null)
             .withMiddlewareReader(null)
             .withParameterReader(null)
             .withRouteReader(null);
